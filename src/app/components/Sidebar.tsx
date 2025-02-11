@@ -9,15 +9,15 @@ export default function Sidebar() {
   const router = useRouter();
 
   const menus = [
-    { name: "Dashboard", icon: <HomeIcon className="h-6 w-6" />, path: "/dashboard" },
-    { name: "Data Statistik", icon: <ChartBarIcon className="h-6 w-6" />, path: "/data" },
-    { name: "Laporan", icon: <DocumentTextIcon className="h-6 w-6" />, path: "/reports" },
+    { name: "Dashboard", icon: <HomeIcon className="size-6" />, path: "/dashboard" },
+    { name: "Data Statistik", icon: <ChartBarIcon className="size-6" />, path: "/data" },
+    { name: "Laporan", icon: <DocumentTextIcon className="size-6" />, path: "/reports" },
   ];
 
   return (
     <div className="w-64 bg-white shadow-md h-full p-4">
       <h2 className="text-xl font-bold mb-6">📊 BigData Dashboard</h2>
-      <ul>
+      <ul className="space-y-1">
         {menus.map((menu) => (
           <li
             key={menu.name}

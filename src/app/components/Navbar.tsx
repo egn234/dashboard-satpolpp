@@ -16,7 +16,7 @@ export default function Navbar() {
         <BellIcon className="size-6 cursor-pointer text-gray-600" />
         <div className="relative">
           <UserCircleIcon
-            className="cursor-pointer text-gray-600"
+            className="size-6 cursor-pointer text-gray-600"
             onClick={() => setIsOpen(!isOpen)}
           />
           {isOpen && (
