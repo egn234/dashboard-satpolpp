@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="flex h-screen">
+      <body className="flex h-screen antialiased">
         {children}
       </body>
       <PrelineScript />

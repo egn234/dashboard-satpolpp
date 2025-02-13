@@ -2,9 +2,8 @@
 
 import Sidebar from "@/app/components/Sidebar";
 import Navbar from "@/app/components/Navbar";
-import StatusCard from "@/app/components/chart/StatusCard";
 import Breadcrumbs from "@/app/components/Breadcrumbs";
-import { PieChartKategori, PieChartStatus} from "@/app/components/chart/PieChart";
+import { StatusCard } from "@/app/components/chart/StatusCard";
 import { LineChartLaporan } from "@/app/components/chart/LineChart";
 
 export default function Dashboard() {
@@ -15,9 +14,11 @@ export default function Dashboard() {
         <Breadcrumbs />
         <Sidebar />
         {/* <!-- Content --> */}
-        <div className="w-full lg:ps-64">
+        <div className="w-full">
           <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
             {/* <!-- your content goes here ... --> */}
+            <StatusCard />
+            <LineChartLaporan />
           </div>
         </div>
         {/* <!-- End Content --> */}
