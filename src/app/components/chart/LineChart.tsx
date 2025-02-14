@@ -72,7 +72,7 @@ export const LineChartLaporan = () => {
   };
 
   return (
-    <div className="flex flex-col p-4 md:p-5 bg-white border shadow rounded-xl">
+    <div className="flex flex-1 flex-col p-4 md:p-5 bg-white border shadow rounded-xl mb-4">
       <h2 className="text-lg font-semibold mb-3">Tren Laporan Mingguan</h2>
       <Line data={chartData} options={options} className="max-h-[300px]" />
     </div>
