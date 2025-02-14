@@ -8,6 +8,10 @@ export async function query(sql, params) {
         database: process.env.DB_NAME,
     });
 
-    const [results] = await connection.execute(sql, params);
-    return results;
+    try {
+        const [results] = await connection.execute(sql, params);
+        return results;
+    } finally {
+        await connection.end(); // Tutup koneksi setelah query selesai
+    }
 }

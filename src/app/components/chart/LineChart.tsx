@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
-import { Chart, LineElement, PointElement, LinearScale, Title, Tooltip, Legend, CategoryScale } from "chart.js";
+import { Chart, Filler, LineElement, PointElement, LinearScale, Title, Tooltip, Legend, CategoryScale } from "chart.js";
 
-Chart.register(LineElement, PointElement, LinearScale, Title, Tooltip, Legend, CategoryScale);
+Chart.register(LineElement, PointElement, LinearScale, Title, Tooltip, Legend, CategoryScale, Filler);
 
 interface Data {
   tanggal: string;
@@ -54,7 +54,7 @@ export const LineChartLaporan = () => {
               data,
               fill: true,
               borderColor: "#3b82f6",
-              backgroundColor: "rgba(59, 130, 246, 0.8)",
+              backgroundColor: "rgba(59, 130, 246, 0.2)",
               tension: 0.2,
             }
           ],

@@ -68,90 +68,38 @@ export const StatusCard = () => {
     }
   }
 
-  return (
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-      {/* <!-- Card --> */}
-      <div className="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-white border shadow rounded-xl">
-        <div className="inline-flex justify-center items-center">
-          <span className="size-2 inline-block bg-yellow-500 rounded-full me-2"></span>
-          <span className="text-xs font-semibold uppercase text-gray-600">Laporan Masuk</span>
-        </div>
-        <div className="text-center">
-          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-800">
-            { data.pending.total }
-          </h3>
-        </div>
-  
-        <dl className="flex justify-center items-center divide-x divide-gray-200">
-          <dt className="pe-3">
-            { handleTrending(data.pending.differencePercentage) }
-            <span className="block text-sm text-gray-500">perubahan</span>
-          </dt>
-          <dd className="text-start ps-3">
-            <span className="text-sm font-semibold text-gray-800">
-              { data.pending.totalLastWeek }
-            </span>
-            <span className="block text-sm text-gray-500">minggu lalu</span>
-          </dd>
-        </dl>
+  const renderCard = (color: string, title: string, total: number, differencePercentage: number, totalLastWeek: number) => (
+    <div className="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-white border shadow rounded-xl">
+      <div className="inline-flex justify-center items-center">
+        <span className={`size-2 inline-block ${color} rounded-full me-2`}></span>
+        <span className="text-xs font-semibold uppercase text-gray-600">{title}</span>
       </div>
-      {/* <!-- End Card --> */}
-    
-      {/* <!-- Card --> */}
-      <div className="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-white border shadow rounded-xl">
-        <div className="inline-flex justify-center items-center">
-          <span className="size-2 inline-block bg-red-500 rounded-full me-2"></span>
-          <span className="text-xs font-semibold uppercase text-gray-600">Laporan Ongoing</span>
-        </div>
-  
-        <div className="text-center">
-          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-800">
-            { data.processing.total }
-          </h3>
-        </div>
-  
-        <dl className="flex justify-center items-center divide-x divide-gray-200">
-          <dt className="pe-3">
-            { handleTrending(data.processing.differencePercentage) }
-            <span className="block text-sm text-gray-500">perubahan</span>
-          </dt>
-          <dd className="text-start ps-3">
-            <span className="text-sm font-semibold text-gray-800">
-              { data.processing.totalLastWeek }
-            </span>
-            <span className="block text-sm text-gray-500">minggu lalu</span>
-          </dd>
-        </dl>
+      <div className="text-center">
+        <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-800">
+          {total}
+        </h3>
       </div>
-      {/* <!-- End Card --> */}
+      <dl className="flex justify-center items-center divide-x divide-gray-200">
+        <dt className="pe-3">
+          {handleTrending(differencePercentage)}
+          <span className="block text-sm text-gray-500">perubahan</span>
+        </dt>
+        <dd className="text-start ps-3">
+          <span className="text-sm font-semibold text-gray-800">
+            {totalLastWeek}
+          </span>
+          <span className="block text-sm text-gray-500">minggu lalu</span>
+        </dd>
+      </dl>
+    </div>
+  );
 
-      {/* <!-- Card --> */}
-      <div className="flex flex-col gap-y-3 lg:gap-y-5 p-4 md:p-5 bg-white border shadow rounded-xl">
-        <div className="inline-flex justify-center items-center">
-          <span className="size-2 inline-block bg-green-500 rounded-full me-2"></span>
-          <span className="text-xs font-semibold uppercase text-gray-600">Laporan Selesai</span>
-        </div>
-  
-        <div className="text-center">
-          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-800">
-            { data.done.total }
-          </h3>
-        </div>
-  
-        <dl className="flex justify-center items-center divide-x divide-gray-200">
-          <dt className="pe-3">
-            { handleTrending(data.done.differencePercentage) }
-            <span className="block text-sm text-gray-500">perubahan</span>
-          </dt>
-          <dd className="text-start ps-3">
-            <span className="text-sm font-semibold text-gray-800">
-              { data.done.totalLastWeek }
-            </span>
-            <span className="block text-sm text-gray-500">minggu lalu</span>
-          </dd>
-        </dl>
-      </div>
-      {/* <!-- End Card --> */}
+  return (
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      {renderCard("bg-yellow-500", "Total Laporan Publik", data.pending.total, data.pending.differencePercentage, data.pending.totalLastWeek)}
+      {renderCard("bg-yellow-500", "Total Laporan Bidang", data.pending.total, data.pending.differencePercentage, data.pending.totalLastWeek)}
+      {renderCard("bg-red-500", "Sedang Ditangani", data.processing.total, data.processing.differencePercentage, data.processing.totalLastWeek)}
+      {renderCard("bg-green-500", "Selesai", data.done.total, data.done.differencePercentage, data.done.totalLastWeek)}
     </div>
   );
 }
